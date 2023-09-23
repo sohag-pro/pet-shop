@@ -77,3 +77,34 @@ It's a laravel pseudo-project
     -  how to know if a category is a sub-category or not? 
         - if `parent_id` is null, then it's a parent category
         - if `parent_id` is not null, then it's a sub-category
+
+
+#### Write an SQL statement to create a view that will be updated daily showing all the orders for the current week including products, clients, payments and status details.
+
+Note: I assumed that the current week starts from Monday and ends on Sunday.
+
+```sql
+    CREATE VIEW order_summery_view AS
+    SELECT
+        o.id AS order_id,
+        o.amount,
+        o.shipped_at,
+        o.created_at,
+        o.updated_at,
+        os.title AS order_status,
+        p.type AS payment_method,
+        concat(u.first_name, " ", u.last_name) AS user_name,
+        u.email AS user_email,
+        u.phone_number AS user_phone,
+        o.products AS order_products 
+    FROM orders o
+    JOIN order_statuses os ON os.id = o.order_status_id
+    JOIN payments p ON p.id = o.payment_id
+    JOIN users u ON u.id = o.user_id
+    WHERE YEAR(o.created_at) = YEAR(CURRENT_DATE)
+    AND WEEK(o.created_at, 1) = WEEK(CURRENT_DATE)
+    GROUP BY o.id
+    ORDER BY o.id DESC
+```
+
+I've added a simple url to view the data: `/orders-summery`. it's also available in the home page.
