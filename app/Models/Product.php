@@ -11,6 +11,11 @@ class Product extends Model
 {
     use HasFactory, HasUuid, SoftDeletes;
 
+    protected $casts = [
+        'description' => 'json',
+        'meta_data' => 'json',
+    ];
+
     public function category()
     {
         return $this->belongsTo(Category::class);

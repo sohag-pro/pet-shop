@@ -9,4 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 class Payment extends Model
 {
     use HasFactory, HasUuid;
+
+    protected $casts = [
+        'details' => 'json',
+    ];
 }
