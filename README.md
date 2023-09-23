@@ -22,6 +22,8 @@ It's a laravel pseudo-project
     ```bash
     php artisan key:generate
     ```
+
+#### [Traditional](https://laravel.com/docs/10.x#your-first-laravel-project) way
 - Create an empty database for our application
 - In the .env file, add database information to allow Laravel to connect to the database
     ```bash
@@ -43,4 +45,22 @@ It's a laravel pseudo-project
 - Run the application
     ```bash
     php artisan serve
+   ```
+#### [Sail](https://laravel.com/docs/10.x/sail) way (Docker)
+- Install [Docker](https://docs.docker.com/get-docker/)
+- If you want to use `sail` command, other than `./vendor/bin/sail`, then add the following line to your ~/.bashrc or ~/.zshrc file:
+    ```bash
+    alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
+    ```
+- Run the application
+    ```bash
+    sail up
+    ```
+- Migrate the database
+    ```bash
+    sail artisan migrate
+    ```
+- Seed the database
+    ```bash
+    sail artisan db:seed
     ```
