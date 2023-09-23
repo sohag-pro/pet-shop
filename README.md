@@ -64,3 +64,16 @@ It's a laravel pseudo-project
     ```bash
     sail artisan db:seed
     ```
+
+## Challenges
+### SQL Queries and Helpers
+
+#### Improve the Pet Shop web-based application's ER diagram
+![Improve the ER Diagram](https://raw.githubusercontent.com/sohag-pro/pet-shop/main/er_product_feature_update.jpg)
+##### How this is gonna work?
+- To have multiple sub-categories for a product, I created a new table named `product_category` with `product_id` and `category_id` columns. So, a product can have multiple categories. it's a many-to-many relationship.
+
+- To have multiple sub-category for a category, I added a new column named `parent_id` in the `categories` table. So, a category can have multiple sub-categories. it's a one-to-many relationship.    
+    -  how to know if a category is a sub-category or not? 
+        - if `parent_id` is null, then it's a parent category
+        - if `parent_id` is not null, then it's a sub-category
