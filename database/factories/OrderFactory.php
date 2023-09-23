@@ -22,11 +22,11 @@ class OrderFactory extends Factory
             'payment_id' => PaymentFactory::new()->create(),
             'products' => [
                 [
-                    'id' => ProductFactory::new()->create(),
+                    'product' => ProductFactory::new()->create(),
                     'quantity' => $this->faker->numberBetween(1, 10),
                 ],
                 [
-                    'id' => ProductFactory::new()->create(),
+                    'product' => ProductFactory::new()->create(),
                     'quantity' => $this->faker->numberBetween(1, 10),
                 ],
             ],
