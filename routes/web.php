@@ -17,3 +17,4 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'welcome');
 
 Route::get('/orders-summery', [SummeryController::class, 'index']);
+Route::get('/weekly-orders-summery', [SummeryController::class, 'weekly']);
