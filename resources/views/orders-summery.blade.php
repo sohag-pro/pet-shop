@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Order Summery</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+        integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
     <div class="container">
         <nav>
@@ -46,11 +50,11 @@ ORDER BY o.id DESC
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-12 text-center">
+        <div class="row mb-5">
+            <div class="col-12 text-center table-responsive">
                 <h2>This weeks order summery</h2>
                 <small>Week Starts on Monday</small>
-                <table class="table">
+                <table class="table table-striped">
                     <tr>
                         <td>Order ID</td>
                         <td>Customer Name</td>
@@ -64,16 +68,16 @@ ORDER BY o.id DESC
                     </tr>
                     @forelse ($orders as $order)
                         <tr>
-                            <td> {{$order->order_id}} </td>
-                            <td> {{$order->user_name}} </td>
-                            <td> {{$order->user_email}} </td>
-                            <td> {{$order->user_phone}} </td>
-                            <td> {{$order->amount}} </td>
-                            <td> {{$order->created_at}} </td>
-                            <td> {{$order->payment_method}} </td>
-                            <td style="text-transform: capitalize"> {{$order->order_status}}</td>
+                            <td> {{ $order->order_id }} </td>
+                            <td> {{ $order->user_name }} </td>
+                            <td> {{ $order->user_email }} </td>
+                            <td> {{ $order->user_phone }} </td>
+                            <td> {{ $order->amount }} </td>
+                            <td> {{ $order->created_at }} </td>
+                            <td> {{ $order->payment_method }} </td>
+                            <td style="text-transform: capitalize"> {{ $order->order_status }}</td>
                             <td>
-                                <table class="table">
+                                <table class="table table-striped table-dark">
                                     <tr>
                                         <td>Product Name</td>
                                         <td>Product Price</td>
@@ -81,20 +85,21 @@ ORDER BY o.id DESC
                                     </tr>
                                     @foreach (json_decode($order->order_products) as $cart)
                                         <tr>
-                                            <td> {{$cart->product->title}} </td>
-                                            <td> {{$cart->product->price}} </td>
-                                            <td> {{$cart->quantity}} </td>
+                                            <td> {{ $cart->product->title }} </td>
+                                            <td> {{ $cart->product->price }} </td>
+                                            <td> {{ $cart->quantity }} </td>
                                         </tr>
                                     @endforeach
                                 </table>
                             </td>
                         </tr>
                     @empty
-                        
+
                     @endforelse
                 </table>
             </div>
         </div>
     </div>
 </body>
+
 </html>
