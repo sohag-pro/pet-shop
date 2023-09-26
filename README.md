@@ -81,6 +81,8 @@ It's a laravel pseudo-project
 
 #### Write an SQL statement to create a view that will be updated daily showing all the orders for the current week including products, clients, payments and status details.
 
+![Order Summery](https://raw.githubusercontent.com/sohag-pro/pet-shop/main/order_summery.jpg)
+
 Note: I assumed that the current week starts from Monday and ends on Sunday.
 
 ```sql
@@ -113,6 +115,8 @@ I've added a simple url to view the data: `/orders-summery`. it's also available
 - order_uuid
 - number of products
 - order amount in cents
+
+![Weekly Order Summery](https://raw.githubusercontent.com/sohag-pro/pet-shop/main/weekly_order_summery.jpg)
 
 ```sql
 CREATE VIEW weekly_order_summery_view AS
