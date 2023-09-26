@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
         integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="{{asset('style.css')}}">
 </head>
 
 <body>
@@ -24,7 +25,8 @@
         <div class="row">
             <div class="col-12">
                 <h2>Code used to make this view</h2>
-                <pre>
+                <pre id="layer"></pre>
+                <pre id="highlight">
 CREATE VIEW order_summery_view AS
 SELECT
     o.id AS order_id,
@@ -100,6 +102,10 @@ ORDER BY o.id DESC
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"
+        integrity="sha512-egJ/Y+22P9NQ9aIyVCh0VCOsfydyn8eNmqBy+y2CnJG+fpRIxXMS6jbWP8tVKp0jp+NO5n8WtMUAnNnGoJKi4w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{{asset('script.js')}}"></script>
 </body>
 
 </html>
