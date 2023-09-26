@@ -108,3 +108,55 @@ Note: I assumed that the current week starts from Monday and ends on Sunday.
 ```
 
 I've added a simple url to view the data: `/orders-summery`. it's also available in the home page.
+
+#### Additionally, create a second view where we can visualize a weekly report with 7 columns, each column will be labeled with the day and date, and each row will show a concatenation of these elements and they will be separated by a double colon ::
+- order_uuid
+- number of products
+- order amount in cents
+
+```sql
+CREATE VIEW weekly_order_summery_view AS
+SELECT
+MAX(CASE WHEN day_and_date = 'Mon' COLLATE utf8mb4_general_ci THEN order_details END) AS Monday,
+MAX(CASE WHEN day_and_date = 'Tue' COLLATE utf8mb4_general_ci THEN order_details END) AS Tuesday,
+MAX(CASE WHEN day_and_date = 'Wed' COLLATE utf8mb4_general_ci THEN order_details END) AS Wednesday,
+MAX(CASE WHEN day_and_date = 'Thu' COLLATE utf8mb4_general_ci THEN order_details END) AS Thursday,
+MAX(CASE WHEN day_and_date = 'Fri' COLLATE utf8mb4_general_ci THEN order_details END) AS Friday,
+MAX(CASE WHEN day_and_date = 'Sat' COLLATE utf8mb4_general_ci THEN order_details END) AS Saturday,
+MAX(CASE WHEN day_and_date = 'Sun' COLLATE utf8mb4_general_ci THEN order_details END) AS Sunday
+FROM (
+SELECT
+    day_and_date,
+    order_details,
+    ROW_NUMBER() OVER (PARTITION BY day_and_date ORDER BY order_id) AS row_num
+FROM (
+    SELECT
+        DATE_FORMAT(o.created_at, '%a') COLLATE utf8mb4_general_ci AS day_and_date,
+        o.id AS order_id,
+        CONCAT(
+            o.id, 
+            '::', 
+            SUM(CAST(JSON_UNQUOTE(JSON_EXTRACT(product_data.json_element, '$.quantity')) AS UNSIGNED)), 
+            '::', 
+            ROUND(o.amount * 100)
+        ) AS order_details
+    FROM
+        orders o
+    JOIN
+        JSON_TABLE(
+            JSON_EXTRACT(o.products, '$[*]'),
+            '$[*]' COLUMNS (
+                json_element JSON PATH '$'
+            )
+        ) AS product_data
+        ON 1 = 1
+    WHERE
+        YEARWEEK(o.created_at, 1) = YEARWEEK(NOW(), 1)
+    GROUP BY
+        day_and_date, o.id
+) AS subquery
+WHERE order_details IS NOT NULL
+) AS pivot_data
+GROUP BY row_num;
+```
+I've added a simple url to view the data: `/weekly-orders-summery`. it's also available in the home page.
