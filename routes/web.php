@@ -20,3 +20,4 @@ Route::view('/', 'welcome');
 Route::get('/orders-summery', [SummeryController::class, 'index']);
 Route::get('/weekly-orders-summery', [SummeryController::class, 'weekly']);
 Route::get('/orders', [TemplateController::class, 'orders']);
+Route::get('/invoice/{id}', [TemplateController::class, 'invoice'])->name('invoice');

@@ -69,4 +69,17 @@ class TemplateController extends Controller
 
         return view('orders', compact('response', 'prev_page', 'next_page'));
     }
+
+    public function invoice($id)
+    {
+
+        $headers = [
+            'Authorization' => 'Bearer '.$this->getToken(),
+        ];
+        $response = $this->sendRequest("order/$id", 'GET', $headers);
+
+        $order = $response->data;
+
+        return view('invoice', compact('order'));
+    }
 }

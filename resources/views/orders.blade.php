@@ -49,7 +49,7 @@
                                 </td>
                                 <td> {{ $order->payment?->type ?? 'n/a' }} </td>
                                 <td style="text-transform: capitalize"> {{ $order->order_status[0]->title }}</td>
-                                <td> <a target="_blank" href="#">Invoice</a> </td>
+                                <td> <a target="_blank" href="{{route('invoice', $order->uuid)}}">Invoice</a> </td>
                             </tr>
                         @empty
                             <tr>
