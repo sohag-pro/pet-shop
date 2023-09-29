@@ -4,6 +4,21 @@
 
 It's a laravel pseudo-project
 
+## Index
+
+- [Installation](#installation)
+    - [Traditional](#traditional-way)
+    - [Sail](#sail-way-docker)
+- [Challenges](#challenges)
+    - [SQL Queries and Helpers](#sql-queries-and-helpers)
+        - [Improve the Pet Shop web-based application's ER diagram](#improve-the-pet-shop-web-based-applications-er-diagram)
+        - [Write an SQL statement to create a view that will be updated daily showing all the orders for the current week including products, clients, payments and status details.](#write-an-sql-statement-to-create-a-view-that-will-be-updated-daily-showing-all-the-orders-for-the-current-week-including-products-clients-payments-and-status-details)
+        - [Additionally, create a second view where we can visualize a weekly report with 7 columns, each column will be labeled with the day and date, and each row will show a concatenation of these elements and they will be separated by a double colon ::](#additionally-create-a-second-view-where-we-can-visualize-a-weekly-report-with-7-columns-each-column-will-be-labeled-with-the-day-and-date-and-each-row-will-show-a-concatenation-of-these-elements-and-they-will-be-separated-by-a-double-colon-)
+    - [HTML email template](#html-email-template)
+        - [Email Template Preview](#email-template-preview)
+        - [Code to create the html email template with Handlebars](#code-to-create-the-html-email-template-with-handlebars)
+        - [How to test the email template?](#how-to-test-the-email-template)
+
 ## Installation
 
 - Clone the repository
