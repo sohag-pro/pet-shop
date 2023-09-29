@@ -18,6 +18,11 @@ It's a laravel pseudo-project
         - [Email Template Preview](#email-template-preview)
         - [Code to create the html email template with Handlebars](#code-to-create-the-html-email-template-with-handlebars)
         - [How to test the email template?](#how-to-test-the-email-template)
+    - [Client Issue Resolution](#client-issue-resolution)
+        - [Case 1](#case-1)
+        - [Case 2](#case-2)
+        - [Case 3](#case-3)
+        - [Case 4](#case-4)
 
 ## Installation
 
@@ -319,4 +324,129 @@ I've added an extra `@` before the handlebars variables to avoid the conflict wi
 - Click on the Orders card on home page
 - Click on the `invoice` button of any order
 
+
+### Client Issue Resolution
+#### Case 1
+**Issue**: The client has brought to our attention an issue concerning the final price displayed during their purchase. They bought one item for 35Kn and two items for 20Kn each, but the final price shown on the screen was 85Kn.
+
+**Solution**: Steps to address the issue:
+- Gather more information about the issue
+    - What is the actual final price?
+    - What is the actual price of each item?
+    - What is the actual quantity of each item?
+    - What is the actual total price of each item?
+- Validate the pricing logic
+    - if there was any recent change in the pricing logic?
+- Collaborate with the team to find the root cause
+    - Check the pricing logic in the code
+    - Check the pricing logic in the database
+    - Check the pricing logic in the UI
+    - Check the pricing logic in the API 
+- Communicate with the Client
+    - Explain the root cause
+    - if the issue was on our side, then apologize for the inconvenience and adjust the final price accordingly by refunding the extra amount
+- Implement preventive measures
+    - work with the team to implement the solution
+    - work with the team to implement the steps to prevent this issue in the future
+    - conduct a thorough testing to make sure the issue is resolved
+- Follow-up with the client
+    - make sure the issue is resolved
+    - make sure the client is satisfied with the solution
+    - gather feedback from the client
+
+#### Case 2
+**Issue**: A client has reported difficulty in logging in despite providing the correct username and password combination. In addition, when attempting to reset the password through the "Forgot password?" feature, they are not receiving the recovery email with the link.
+
+**Solution**: Steps to address the issue:
+- Verify login credentials
+    - Confirm with the client that they are entering the correct username and password combination. Ensure they have not inadvertently made any typographical errors.
+- Check for any recent changes
+    - Check if there was any recent change in the login logic
+    - Check if there was any recent change in the password reset logic
+- Check for account lockout
+    - Check if the account is locked out
+    - Check if the account is disabled
+- Check for any recent changes in the email
+    - Check if there was any recent change in the email service
+    - Check if there was any recent change in the email template
+- Assist the client in resetting their password
+    - if the client is unable to reset their password, then reset the password for them with admin privileges and send them the new password securely
+- Communicate with the Client
+    - Maintain a professional and courteous tone throughout the troubleshooting process
+    - Provide clear and concise instructions
+- Implement preventive measures
+    - work with the team to implement the solution
+    - work with the team to implement the steps to prevent this issue in the future
+    - conduct a thorough testing to make sure the issue is resolved
+- Follow-up with the client
+    - make sure the issue is resolved
+    - make sure the client is satisfied with the solution
+    - gather feedback from the client
+
+
+#### Case 3
+**Issue**: A customer is encountering issues during the payment stage, with the screen freezing when attempting to complete the process, despite trying all available payment methods.
+
+**Solution**: Steps to address the issue:
+- Gather more information about the issue
+    - What is the actual issue?
+    - What is the actual error message?
+    - What is the actual payment method?
+    - What is the actual payment gateway?
+    - What is the actual browser?
+    - What is the actual device?
+    - What is the actual operating system?
+- Validate the payment methods are working
+    - if there was any recent change in the payment logic?
+    - monitor payment logs
+    - check for payment gateway issues
+- Check for technical issues
+    - Check if there was any recent change in the payment gateway
+    - Check if there was any recent change in the payment service
+    - Check if there was any recent change in the payment API
+    - Check if there was any recent change in the payment UI
+    - check for server issues and downtimes
+    - monitor server logs
+- Test the payment methods
+    - Test the payment methods in the same browser
+    - Test the payment methods in different browsers
+    - Test the payment methods in different devices
+    - Test the payment methods in different operating systems
+- Temporary solution
+    - if the issue was on our side, then provide a temporary solution to the client like manual payment or payment through a different payment gateway
+- Communicate with the Client
+    - Explain the root cause
+    - Keep the client updated with the progress
+- Implement preventive measures
+    - work with the team to implement the solution
+    - work with the team to implement the steps to prevent this issue in the future
+    - conduct a thorough testing to make sure the issue is resolved
+- Follow-up with the client
+    - make sure the issue is resolved
+    - make sure the client is satisfied with the solution
+    - gather feedback from the client
+
+#### Case 4
+**Issue**: A customer has reported receiving the "Amount Due" email as expected. However, they mentioned that the wording hasn't been displayed correctly, preventing them from seeing the actual amount they need to pay. Instead, the email only reads "{amunt_due}."
+**Solution**: Steps to address the issue:
+- Gather more information about the issue
+    - What is the actual issue?
+- Validate the email template
+    - if there was any recent change in the email template?
+    - Check for variable typos
+- Test the email template
+    - Test the email template in different browsers
+    - Test the email template in different devices
+    - Test the email template in different operating systems
+- Communicate with the Client
+    - Explain the root cause
+    - Keep the client updated with the progress
+- Implement preventive measures
+    - work with the team to implement the solution
+    - work with the team to implement the steps to prevent this issue in the future
+    - conduct a thorough testing to make sure the issue is resolved
+- Follow-up with the client
+    - make sure the issue is resolved
+    - make sure the client is satisfied with the solution
+    - gather feedback from the client
 
