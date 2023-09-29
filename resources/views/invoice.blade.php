@@ -37,7 +37,7 @@
                             </tr>
                             <tr>
                                 <td style="text-align: left; padding: 10px 5px;">Date:</td>
-                                <td colspan="2" style="text-align: left;">@{{created_at}}</td>
+                                <td colspan="2" style="text-align: left;">@{{format created_at}}</td>
                             </tr>
                         </thead>
                         <tbody id="productsCompiled"></tbody>
@@ -98,9 +98,13 @@
 
     <!-- Include Handlebars from a CDN -->
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <script>
         Handlebars.registerHelper("dueAmount", function (total, paid) {
             return total - paid;
+        });
+        Handlebars.registerHelper("format", function (datetime) {
+            return moment(datetime).format('MMMM Do YYYY, h:mm:ss a');;
         });
 
         var data = {!!json_encode($order)!!};
