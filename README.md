@@ -428,6 +428,7 @@ I've added an extra `@` before the handlebars variables to avoid the conflict wi
 
 #### Case 4
 **Issue**: A customer has reported receiving the "Amount Due" email as expected. However, they mentioned that the wording hasn't been displayed correctly, preventing them from seeing the actual amount they need to pay. Instead, the email only reads "{amunt_due}."
+
 **Solution**: Steps to address the issue:
 - Gather more information about the issue
     - What is the actual issue?
