@@ -125,7 +125,6 @@ Note: I assumed that the current week starts from Monday and ends on Sunday.
     JOIN users u ON u.id = o.user_id
     WHERE YEAR(o.created_at) = YEAR(CURRENT_DATE)
     AND WEEK(o.created_at, 1) = WEEK(CURRENT_DATE, 1)
-    GROUP BY o.id
     ORDER BY o.id DESC
 ```
 
