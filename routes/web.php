@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SummeryController;
+use App\Http\Controllers\TemplateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,3 +19,4 @@ Route::view('/', 'welcome');
 
 Route::get('/orders-summery', [SummeryController::class, 'index']);
 Route::get('/weekly-orders-summery', [SummeryController::class, 'weekly']);
+Route::get('/orders', [TemplateController::class, 'orders']);
