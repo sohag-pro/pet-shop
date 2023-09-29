@@ -21,7 +21,6 @@ class SummeryController extends Controller
         return view('weekly-order-summery', compact('orders', 'dayNamesWithDates'));
     }
 
-
     /**
      * @return array
      */
@@ -30,7 +29,7 @@ class SummeryController extends Controller
         $dayNamesWithDates = [];
 
         for ($i = 1; $i <= 7; $i++) {
-            $dayNamesWithDates[] = date('l d/m/Y', strtotime(date('Y') . 'W' . date('W') . $i));
+            $dayNamesWithDates[] = date('l d/m/Y', strtotime(date('Y').'W'.date('W').$i));
         }
 
         return $dayNamesWithDates;
