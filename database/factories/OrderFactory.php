@@ -38,6 +38,7 @@ class OrderFactory extends Factory
             ],
             'amount' => $this->faker->randomFloat(2, 0, 1000),
             'shipped_at' => $this->faker->dateTime(),
+            'created_at' => $this->faker->dateTimeBetween(now()->startOfWeek(), now()->endOfWeek()),
         ];
     }
 }
