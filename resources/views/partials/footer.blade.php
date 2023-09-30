@@ -55,3 +55,4 @@ aria-hidden="true">
 
 <!-- Page level custom scripts -->
 <script src="js/demo/datatables-demo.js"></script>
+<script src="{{asset('script.js')}}"></script>

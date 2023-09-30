@@ -1,36 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Order Summery</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
-        integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="{{ asset('style.css') }}">
-</head>
+@section('title', 'Orders Summery')
 
-<body>
-    <div class="container">
-        <nav>
-            <ul class="nav">
-                <li class="nav-item">
-                    <a class="nav-link" style="font-size: 40px" href="/">Pet Shop</a>
-                </li>
-            </ul>
-        </nav>
+@section('content')
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">This weeks weekly order summery</h1>
+<p class="mb-4">I assumed week starts on monday</p>
 
-        <div class="row">
-            <div class="col-12">
-                <h2>Code used to make this view</h2>
-                <p>
-                    Note: As it's not possible to create a view with dynamic column names, we have to use a backend
-                    script to generate the view with dynamic column names.
-                </p>
-                <pre id="layer"></pre>
-                <pre id="highlight">
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Code used to make this view</h6>
+    </div>
+    <div class="card-body">
+        <pre id="layer"></pre>
+            <pre id="highlight">
 CREATE VIEW weekly_order_summery_view AS
 SELECT
 MAX(CASE WHEN day_and_date = 'Mon' COLLATE utf8mb4_general_ci THEN order_details END) AS Monday,
@@ -74,42 +58,35 @@ FROM (
 WHERE order_details IS NOT NULL
 ) AS pivot_data
 GROUP BY row_num;
-                </pre>
-            </div>
-        </div>
-
-        <div class="row mb-5">
-            <div class="col-12 text-center">
-                <h2>This weeks weekly order summery</h2>
-                <small>Week Starts on Monday</small>
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <tr>
-                            @foreach ($dayNamesWithDates as $dayName)
-                                <td>{{ $dayName }}</td>
-                            @endforeach
-                        </tr>
-                        @forelse ($orders as $dayOrders)
-                            <tr>
-                                <td style="white-space: nowrap; font-size: 12px;"> {{ $dayOrders->Monday }} </td>
-                                <td style="white-space: nowrap; font-size: 12px;"> {{ $dayOrders->Tuesday }} </td>
-                                <td style="white-space: nowrap; font-size: 12px;"> {{ $dayOrders->Wednesday }} </td>
-                                <td style="white-space: nowrap; font-size: 12px;"> {{ $dayOrders->Thursday }} </td>
-                                <td style="white-space: nowrap; font-size: 12px;"> {{ $dayOrders->Friday }} </td>
-                                <td style="white-space: nowrap; font-size: 12px;"> {{ $dayOrders->Saturday }} </td>
-                                <td style="white-space: nowrap; font-size: 12px;"> {{ $dayOrders->Sunday }} </td>
-                            </tr>
-                        @empty
-                        @endforelse
-                    </table>
-                </div>
-            </div>
+        </pre>
+    </div>
+</div>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">This weeks weekly order summery</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <tr>
+                    @foreach ($dayNamesWithDates as $dayName)
+                        <td>{{ $dayName }}</td>
+                    @endforeach
+                </tr>
+                @forelse ($orders as $dayOrders)
+                    <tr>
+                        <td style="white-space: nowrap; font-size: 12px;"> {{ $dayOrders->Monday }} </td>
+                        <td style="white-space: nowrap; font-size: 12px;"> {{ $dayOrders->Tuesday }} </td>
+                        <td style="white-space: nowrap; font-size: 12px;"> {{ $dayOrders->Wednesday }} </td>
+                        <td style="white-space: nowrap; font-size: 12px;"> {{ $dayOrders->Thursday }} </td>
+                        <td style="white-space: nowrap; font-size: 12px;"> {{ $dayOrders->Friday }} </td>
+                        <td style="white-space: nowrap; font-size: 12px;"> {{ $dayOrders->Saturday }} </td>
+                        <td style="white-space: nowrap; font-size: 12px;"> {{ $dayOrders->Sunday }} </td>
+                    </tr>
+                @empty
+                @endforelse
+            </table>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"
-        integrity="sha512-egJ/Y+22P9NQ9aIyVCh0VCOsfydyn8eNmqBy+y2CnJG+fpRIxXMS6jbWP8tVKp0jp+NO5n8WtMUAnNnGoJKi4w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="{{ asset('script.js') }}"></script>
-</body>
-
-</html>
+</div>
+@endsection

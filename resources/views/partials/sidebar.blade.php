@@ -14,7 +14,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="/">
+        <a class="nav-link" href="{{url('/')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
         </a>
@@ -28,20 +28,20 @@
         Challenges
     </div>
 
-    <li class="nav-item">
-        <a class="nav-link" href="#">
+    <li @if(last(request()->segments()) == 'orders-summery') class="nav-item active" @else class="nav-item" @endif >
+        <a class="nav-link" href="{{url('/orders-summery')}}">
             <i class="fas fa-fw fa-shopping-cart"></i>
             <span>Order Summery</span>
         </a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">
+    <li @if(last(request()->segments()) == 'weekly-orders-summery') class="nav-item active" @else class="nav-item" @endif>
+        <a class="nav-link" href="{{url('/weekly-orders-summery')}}">
             <i class="fas fa-fw fa-calendar"></i>
             <span>Weekly Order Summery</span>
         </a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">
+    <li @if(last(request()->segments()) == 'orders') class="nav-item active" @else class="nav-item" @endif>
+        <a class="nav-link" href="{{url('/orders')}}">
             <i class="fas fa-fw fa-file"></i>
             <span>Orders</span>
         </a>
