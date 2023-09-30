@@ -56,7 +56,7 @@
     </div>
 
     <li class="nav-item">
-        <a class="nav-link" href="https://github.com/sohag-pro/pet-shop#readme">
+        <a class="nav-link" target="_blank" href="https://github.com/sohag-pro/pet-shop#readme">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Github</span>
         </a>
