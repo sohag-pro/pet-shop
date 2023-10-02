@@ -348,9 +348,9 @@ I've added an extra `@` before the handlebars variables to avoid the conflict wi
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
         <script>
             Handlebars.registerHelper("dueAmount", function (total, payment) {
-            if( payment == null ) {
-                return total;
-            }
+                if( payment == null ) {
+                    return total;
+                }
                 return 0;
             });
     
