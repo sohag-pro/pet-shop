@@ -365,6 +365,13 @@ I've added an extra `@` before the handlebars variables to avoid the conflict wi
                 return moment(datetime).format('MMMM Do YYYY, h:mm:ss a');
             });
 
+            Handlebars.registerHelper("fullname", function (user) {
+                if (user.middle_name == null) {
+                    return user.last_name + " " + user.first_name;
+                }
+                return user.last_name + " " + user.first_name + " " + user.middle_name;
+            });
+
             var data = {!!json_encode($order)!!}; // this is the data from the controller
 
             var products = Handlebars.compile(document.getElementById("products").innerHTML);
