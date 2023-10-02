@@ -234,10 +234,7 @@ I've added an extra `@` before the handlebars variables to avoid the conflict wi
                         <p
                             style="font-family: 'Poppins', sans-serif; line-height: 30px;"
                         >
-                            Dear @{{user.first_name}} @{{user.last_name}}
-                            @{{user.middle_name}}, We are contacting you because
-                            there is an <i>amount due</i> on your purchase
-                            @{{purchase.id}}
+                            Dear @{{fullname user}}, We are contacting you because there is an <i>amount due</i> on your purchase @{{purchase.id}}
                         </p>
                     </td>
                 </tr>
@@ -293,7 +290,7 @@ I've added an extra `@` before the handlebars variables to avoid the conflict wi
                                     <td
                                         style="text-align: right; padding-right: 5px;"
                                     >
-                                        @{{amount}} <b>Kn</b>
+                                        @{{paidAmount amount payment}} <b>Kn</b>
                                     </td>
                                 </tr>
                             </tfoot>
@@ -304,7 +301,7 @@ I've added an extra `@` before the handlebars variables to avoid the conflict wi
                     <td>
                         <p>
                             According to our records, the <i>amount due</i> is
-                            @{{dueAmount amount amount}} Kn. Please, click on
+                            @{{dueAmount amount payment}} Kn. Please, click on
                             the next button <b>to pay</b> this difference:
                         </p>
                     </td>
@@ -350,11 +347,22 @@ I've added an extra `@` before the handlebars variables to avoid the conflict wi
         <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
         <script>
-            Handlebars.registerHelper("dueAmount", function (total, paid) {
-                return total - paid;
+            Handlebars.registerHelper("dueAmount", function (total, payment) {
+            if( payment == null ) {
+                return total;
+            }
+                return 0;
             });
+    
+            Handlebars.registerHelper("paidAmount", function (total, payment) {
+                if( payment == null ) {
+                    return 0;
+                }
+                return total;
+            });
+    
             Handlebars.registerHelper("format", function (datetime) {
-                return moment(datetime).format('MMMM Do YYYY, h:mm:ss a');;
+                return moment(datetime).format('MMMM Do YYYY, h:mm:ss a');
             });
 
             var data = {!!json_encode($order)!!}; // this is the data from the controller
