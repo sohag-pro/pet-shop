@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Artisan;
 
 class ResetData extends Command
 {
@@ -25,6 +26,6 @@ class ResetData extends Command
      */
     public function handle()
     {
-        $this->call('migrate:refresh --seed');
+        Artisan::call('migrate:refresh --seed');
     }
 }
