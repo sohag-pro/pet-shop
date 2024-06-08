@@ -8,14 +8,21 @@ RUN composer install --prefer-dist --no-dev --optimize-autoloader --no-interacti
 # Stage 2: Set up the production environment with Apache, PHP, and MySQL
 FROM php:8.2-apache as production
 
-# Install necessary PHP extensions and MySQL server
+# Install necessary PHP extensions and MySQL client
 RUN apt-get update && \
-    apt-get install -y libpng-dev libjpeg-dev libfreetype6-dev mysql-server && \
+    apt-get install -y gnupg libpng-dev libjpeg-dev libfreetype6-dev && \
     docker-php-ext-configure gd --with-freetype --with-jpeg && \
     docker-php-ext-install gd && \
     docker-php-ext-configure opcache --enable-opcache && \
     docker-php-ext-install pdo pdo_mysql && \
     rm -rf /var/lib/apt/lists/*
+
+# Add MySQL APT repository and install MySQL server
+RUN wget https://dev.mysql.com/get/mysql-apt-config_0.8.22-1_all.deb && \
+    dpkg -i mysql-apt-config_0.8.22-1_all.deb && \
+    apt-get update && \
+    apt-get install -y mysql-server && \
+    rm -f mysql-apt-config_0.8.22-1_all.deb
 
 # Set up MySQL
 RUN service mysql start && \
