@@ -2,7 +2,7 @@
 
 ## About Pet Shop
 
-It's a laravel pseudo-project. Available at [pet-shop.sohag.pro](https://pet-shop.sohag.pro/)
+It's a laravel pseudo-project.
 
 ## Video Demo
 
