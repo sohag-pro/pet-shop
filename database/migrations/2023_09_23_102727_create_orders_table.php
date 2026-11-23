@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignUuid('payment_id')->nullable()->constrained();
             $table->json('products');
             $table->json('address');
-            $table->double('amount', 12, 2);
+            $table->double('amount');
             $table->timestamps();
             $table->timestamp('shipped_at')->nullable();
         });
