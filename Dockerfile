@@ -4,7 +4,7 @@ WORKDIR /app
 COPY ./ /app
 RUN composer install --prefer-dist --no-dev --optimize-autoloader --no-interaction
 
-FROM php:8.2-apache as production
+FROM php:8.3-apache as production
 
 RUN docker-php-ext-configure opcache --enable-opcache && docker-php-ext-install pdo pdo_mysql
 
