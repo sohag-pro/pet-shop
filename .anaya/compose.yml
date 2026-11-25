@@ -1,0 +1,39 @@
+# .anaya/compose.yml — Anaya campaign environment (generated). Service wiring applies only inside these containers.
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /work
+    environment:
+      DB_CONNECTION: mysql
+      DB_HOST: mysql
+      DB_PORT: '3306'
+      DB_DATABASE: anaya
+      DB_USERNAME: anaya
+      DB_PASSWORD: anaya
+    depends_on:
+      - mysql
+  mysql:
+    image: 'docker.io/mysql/mysql-server:8.0'
+    environment:
+      MYSQL_DATABASE: anaya
+      MYSQL_USER: anaya
+      MYSQL_PASSWORD: anaya
+      MYSQL_ROOT_PASSWORD: anaya
+    volumes:
+      - 'mysql-data:/var/lib/mysql'
+    healthcheck:
+      test:
+        - CMD
+        - mysqladmin
+        - ping
+        - '-h'
+        - 127.0.0.1
+        - '-uanaya'
+        - '-panaya'
+      interval: 5s
+      timeout: 5s
+      retries: 30
+volumes:
+  mysql-data: {}
