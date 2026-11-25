@@ -15,7 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->foreignUuid('category_id')->constrained();
             $table->string('title');
-            $table->double('price', 12, 2);
+            $table->double('price');
             $table->json('description');
             $table->json('meta_data');
             $table->timestamps();
