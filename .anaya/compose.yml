@@ -15,7 +15,7 @@ services:
     depends_on:
       - mysql
   mysql:
-    image: 'docker.io/mysql/mysql-server:8.0'
+    image: 'docker.io/library/mysql:8.4'
     environment:
       MYSQL_DATABASE: anaya
       MYSQL_USER: anaya

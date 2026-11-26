@@ -4,7 +4,7 @@ This directory is the container recipe Anaya uses to build, install and test thi
 repository in isolation. Anaya's ARMORER generated it during a campaign.
 
 - `Dockerfile` — the `app` image (PHP 8.3, Node 22).
-- `compose.yml` — `app` plus its services: `mysql` (docker.io/mysql/mysql-server:8.0).
+- `compose.yml` — `app` plus its services: `mysql` (docker.io/library/mysql:8.4).
 
 Service wiring (`DB_HOST`, `REDIS_HOST`, …) lives in `compose.yml` and applies **only
 inside the containers**; your own `.env` is never read or copied. Values in it are
